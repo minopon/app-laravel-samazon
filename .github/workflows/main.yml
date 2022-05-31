@@ -1,4 +1,4 @@
-name: Staging deployment
+name: Heroku deployment
 
 on:
   push:
@@ -14,7 +14,7 @@ jobs:
 
       - name: Add heroku remote origin
         run: |
-          git remote add heroku https://heroku:b2f73873-ddee-45ee-8cc3-7e632ebe126a@git.heroku.com/app-laravel-samazon.git
+          git remote add heroku https://heroku:${{ secrets.HEROKU_API_KEY }}@git.heroku.com/app-laravel-samazon.git
       - name: Deploy app to Heroku
         run: |
           git subtree push --prefix samazon heroku main

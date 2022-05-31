@@ -1,0 +1,20 @@
+name: Staging deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Add heroku remote origin
+        run: |
+          git remote add heroku https://heroku:b2f73873-ddee-45ee-8cc3-7e632ebe126a@git.heroku.com/app-laravel-samazon.git
+      - name: Deploy app to Heroku
+        run: |
+          git subtree push --prefix samazon heroku main

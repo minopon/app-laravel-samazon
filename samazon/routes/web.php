@@ -59,3 +59,5 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
     Route::get('products/import/csv', 'Dashboard\ProductController@import')->middleware('auth:admins');
     Route::post('products/import/csv', 'Dashboard\ProductController@import_csv')->middleware('auth:admins');
 });
+
+URL::forceScheme('https');

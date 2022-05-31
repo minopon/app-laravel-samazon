@@ -59,9 +59,3 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
     Route::get('products/import/csv', 'Dashboard\ProductController@import')->middleware('auth:admins');
     Route::post('products/import/csv', 'Dashboard\ProductController@import_csv')->middleware('auth:admins');
 });
-
-// APP_EVNの値を読み取り、その値がproductionと同じかどうかで処理を切り分ける
-if(env('APP_EVN') === 'production') {
-    // httpsでアセットを読み込む
-    URL::forceScheme('https');
-}
